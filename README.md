@@ -1,5 +1,9 @@
 # feluda-pi-extension
 
+<p align="center">
+  <img src="./branding/feluda-pi-extention.png" alt="feluda-pi-extension logo" width="560" />
+</p>
+
 A [pi](https://pi.dev) package that exposes [Feluda](https://github.com/anistark/feluda) as:
 
 - a **skill** for narrow, explicit license-audit workflows
@@ -135,7 +139,18 @@ Add this repository secret before cutting a release:
 1. Bump `package.json` version
 2. Push the change to `main`
 3. Create a GitHub release for that version/tag
-4. GitHub Actions will run typecheck + tests and then publish to npm
+4. Optionally start from `.github/release-template.md` so the release notes include the project logo
+5. GitHub Actions will run typecheck + tests and then publish to npm
+
+### GitHub social preview
+
+GitHub's social preview image is configured in repository settings, not from a tracked file alone.
+Use this image for the repo social preview:
+
+- `branding/feluda-pi-extention.png`
+
+Manual step in GitHub:
+- **Settings → General → Social preview → Upload image**
 
 ## Verified status
 

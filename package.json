@@ -2,6 +2,8 @@
   "name": "feluda-pi-extension",
   "version": "0.1.0",
   "description": "Pi package that exposes Feluda license analysis as a skill and custom tools.",
+  "license": "MIT",
+  "author": "Farhaan Bukhsh",
   "type": "module",
   "repository": {
     "type": "git",
@@ -18,11 +20,13 @@
   "files": [
     "extensions",
     "skills",
+    "branding",
     "README.md"
   ],
   "pi": {
     "extensions": ["./extensions/feluda/index.ts"],
-    "skills": ["./skills"]
+    "skills": ["./skills"],
+    "image": "https://raw.githubusercontent.com/farhaanbukhsh/feluda-pi-extension/main/branding/feluda-pi-extention.png"
   },
   "scripts": {
     "test": "vitest run",
