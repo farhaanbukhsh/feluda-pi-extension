@@ -1,0 +1,10 @@
+[
+  {
+    "name": "fancy-gpl-lib",
+    "version": "3.1.0",
+    "license": "GPL-3.0",
+    "is_restrictive": true,
+    "compatibility": "Incompatible",
+    "osi_status": "Approved"
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "name": "serde",
+    "version": "1.0.214",
+    "license": "MIT",
+    "is_restrictive": false,
+    "compatibility": "Compatible",
+    "osi_status": "Approved"
+  },
+  {
+    "name": "tokio",
+    "version": "1.42.0",
+    "license": "MIT",
+    "is_restrictive": false,
+    "compatibility": "Compatible",
+    "osi_status": "Approved"
+  },
+  {
+    "name": "fancy-gpl-lib",
+    "version": "3.1.0",
+    "license": "GPL-3.0",
+    "is_restrictive": true,
+    "compatibility": "Incompatible",
+    "osi_status": "Approved"
+  }
+]

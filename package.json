@@ -1,0 +1,29 @@
+{
+  "name": "feluda-pi-extension",
+  "version": "0.1.0",
+  "description": "Pi package that exposes Feluda license analysis as a skill and custom tools.",
+  "type": "module",
+  "keywords": ["pi-package", "pi", "feluda", "license", "sbom", "compliance"],
+  "pi": {
+    "extensions": ["./extensions/feluda/index.ts"],
+    "skills": ["./skills"]
+  },
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-ai": "*",
+    "@earendil-works/pi-coding-agent": "*",
+    "typebox": "*"
+  },
+  "devDependencies": {
+    "@earendil-works/pi-ai": "*",
+    "@earendil-works/pi-coding-agent": "*",
+    "@types/node": "^24.0.0",
+    "typebox": "*",
+    "typescript": "^5.8.0",
+    "vitest": "^2.1.9"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "spdxVersion": "SPDX-2.3",
+  "packages": [
+    { "name": "serde", "versionInfo": "1.0.214" },
+    { "name": "tokio", "versionInfo": "1.42.0" },
+    { "name": "fancy-gpl-lib", "versionInfo": "3.1.0" }
+  ]
+}
