@@ -118,9 +118,52 @@ export async function runFeluda(args: string[], signal?: AbortSignal): Promise<{
   }
 }
 
+function stripAnsi(input: string): string {
+  return input
+    .replace(/\u001B\[[0-9;]*[A-Za-z]/g, "")
+    .replace(/\u001B\][^\u0007]*(?:\u0007|\u001B\\)/g, "")
+    .replace(/\r/g, "");
+}
+
+function extractJsonPayload(stdout: string): string | null {
+  const cleaned = stripAnsi(stdout).trim();
+  const firstArray = cleaned.indexOf("[");
+  const firstObject = cleaned.indexOf("{");
+
+  let start = -1;
+  let end = -1;
+
+  if (firstArray !== -1 && (firstObject === -1 || firstArray < firstObject)) {
+    start = firstArray;
+    end = cleaned.lastIndexOf("]");
+  } else if (firstObject !== -1) {
+    start = firstObject;
+    end = cleaned.lastIndexOf("}");
+  }
+
+  if (start === -1 || end === -1 || end <= start) {
+    return null;
+  }
+
+  return cleaned.slice(start, end + 1);
+}
+
 export function parseLicenseEntries(stdout: string): FeludaLicenseEntry[] {
   try {
-    const parsed = JSON.parse(stdout) as unknown;
+    const payload = extractJsonPayload(stdout);
+    if (!payload) {
+      const cleaned = stripAnsi(stdout);
+      if (
+        cleaned.includes("All dependencies passed the license check") ||
+        cleaned.includes("No restrictive") ||
+        cleaned.includes("No incompatible")
+      ) {
+        return [];
+      }
+      throw new Error("No JSON payload found in Feluda output");
+    }
+
+    const parsed = JSON.parse(payload) as unknown;
     if (!Array.isArray(parsed)) {
       throw new Error("Expected an array of dependency entries");
     }

@@ -55,6 +55,20 @@ describe("feluda cli helpers", () => {
     expect(entries[2]?.name).toBe("fancy-gpl-lib");
   });
 
+  it("parses license entries from mixed spinner + json output", async () => {
+    const stdout = await readFile(path.join(fixtures, "basic-scan.json"), "utf8");
+    const noisy = `\u001b[2K\r⠋ scanning...\n${stdout}`;
+    const entries = parseLicenseEntries(noisy);
+    expect(entries).toHaveLength(3);
+    expect(entries[0]?.name).toBe("serde");
+  });
+
+  it("treats success-without-json restrictive output as empty results", () => {
+    const stdout = "\u001b[2K\r⠋ scanning...\n🎉 All dependencies passed the license check! No restrictive or incompatible licenses found.\n";
+    const entries = parseLicenseEntries(stdout);
+    expect(entries).toEqual([]);
+  });
+
   it("resolves sbom output paths for single format", () => {
     expect(resolveSbomOutput({ format: "spdx", output: "sbom" }, "/tmp")).toEqual({
       outputArg: "sbom.spdx.json",

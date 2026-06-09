@@ -4,6 +4,11 @@
   "description": "Pi package that exposes Feluda license analysis as a skill and custom tools.",
   "type": "module",
   "keywords": ["pi-package", "pi", "feluda", "license", "sbom", "compliance"],
+  "files": [
+    "extensions",
+    "skills",
+    "README.md"
+  ],
   "pi": {
     "extensions": ["./extensions/feluda/index.ts"],
     "skills": ["./skills"]
