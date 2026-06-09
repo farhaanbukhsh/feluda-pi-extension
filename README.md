@@ -94,6 +94,11 @@ Recommended: **Feluda v1.12+**
 
 ## Install in pi
 
+### From npm
+```bash
+pi install npm:feluda-pi-extension
+```
+
 ### From a local path
 ```bash
 pi install /absolute/path/to/feluda-pi-extension
@@ -111,6 +116,26 @@ npm install
 npm run typecheck
 npm test
 ```
+
+## Release and publish
+
+This repo includes two GitHub Actions workflows:
+
+- `CI` — runs on pushes to `main` and pull requests
+- `Publish to npm` — runs when a GitHub release is published
+
+### Required secret
+
+Add this repository secret before cutting a release:
+
+- `NPM_TOKEN` — an npm automation token with permission to publish this package
+
+### Release flow
+
+1. Bump `package.json` version
+2. Push the change to `main`
+3. Create a GitHub release for that version/tag
+4. GitHub Actions will run typecheck + tests and then publish to npm
 
 ## Verified status
 

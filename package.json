@@ -3,6 +3,17 @@
   "version": "0.1.0",
   "description": "Pi package that exposes Feluda license analysis as a skill and custom tools.",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/farhaanbukhsh/feluda-pi-extension.git"
+  },
+  "bugs": {
+    "url": "https://github.com/farhaanbukhsh/feluda-pi-extension/issues"
+  },
+  "homepage": "https://github.com/farhaanbukhsh/feluda-pi-extension#readme",
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": ["pi-package", "pi", "feluda", "license", "sbom", "compliance"],
   "files": [
     "extensions",
@@ -16,7 +27,8 @@
   "scripts": {
     "test": "vitest run",
     "test:watch": "vitest",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "ci": "npm run typecheck && npm test"
   },
   "peerDependencies": {
     "@earendil-works/pi-ai": "*",
